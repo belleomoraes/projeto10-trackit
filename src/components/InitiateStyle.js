@@ -5,7 +5,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center ;
-margin: 0 auto;
+background-color: #ffffff;
 
 img {
     margin: 5%;

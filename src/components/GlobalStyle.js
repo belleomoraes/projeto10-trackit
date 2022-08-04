@@ -8,13 +8,12 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-    background-color: #F2F2F2;
-}
-
-.root {
+    background-color: #FFFFFF;
     font-family: 'Lexend Deca', sans-serif;
     font-weight: 400;
 }
+
+
 
 `
 

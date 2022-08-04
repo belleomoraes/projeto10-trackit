@@ -7,6 +7,7 @@ align-items: center;
 color: #126BA5;
 padding: 5%;
 font-size: 4.7vh;
+margin-top: 18vh;
 
 div {
     margin-left: 5%;

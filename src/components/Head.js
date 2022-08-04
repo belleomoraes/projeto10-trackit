@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 import logo from "../assets/logo.jpg"
 export default function Head () {
@@ -22,6 +21,8 @@ height: 16vh;
 color: #FFFFFF;
 font-family: 'Playball', cursive;
 font-size: 7vh;
+position: absolute;
+top: 0;
 
 div {
     margin-left: 5%;
