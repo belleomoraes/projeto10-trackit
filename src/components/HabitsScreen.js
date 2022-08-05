@@ -9,6 +9,7 @@ import axios from "axios";
 import UserContext from "./UserContext";
 export default function Habits() {
   const [controlHabit, setControlHabit] = useState({});
+  const [newHabit, setNewHabit] = useState(false);
   const { config } = useContext(UserContext);
   useEffect(() => {
     const promise = axios.get(
@@ -18,15 +19,15 @@ export default function Habits() {
       setControlHabit(res.data);
     });
   }, []);
-  console.log(controlHabit)
 
   return (
     <>
       <Head />
       <SubHead>
         <div>Meus Hábitos</div>
-        <button>+</button>
+        <button onClick={() => setNewHabit(true)}>+</button>
       </SubHead>
+      {!newHabit ? "" : <FormHabit />}
       {controlHabit === {} ?  <WithHabit/> : <NoHabit />}
       <Menu />
     </>
