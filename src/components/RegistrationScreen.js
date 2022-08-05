@@ -1,18 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import axios from "axios";
 import Initiate from "./InitiateStyle";
 import logo from "../assets/logo.jpg";
+import { useContext} from "react";
+import UserContext from "./UserContext";
 
 
 
 export default function RegistrationScreen() {
-  const [userInfo, setUserInfo] = useState({
-    email: "",
-    name: "",
-    image: "",
-    password: "",
-  });
+  const { userInfo, setUserInfo} = useContext(UserContext);
   const navigate = useNavigate()
 
   function handleForm(e) {

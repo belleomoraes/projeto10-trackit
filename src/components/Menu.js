@@ -13,7 +13,15 @@ export default function Menu() {
       <Link to={"/habitos"}> <button>Hábitos</button></Link>
       </Button>
       <Bar>
-      <Link to={"/hoje"}> <CircularProgressbar value={percentage} text={`${"Hoje"}`} /></Link>
+      <Link to={"/hoje"}> <CircularProgressbar value={percentage} text={`${"Hoje"}`}
+      background
+      backgroundPadding={6}
+      styles={buildStyles({
+        backgroundColor: "#52B6FF",
+        textColor: "#fff",
+        pathColor: "#fff",
+        trailColor: "transparent"
+      })} /></Link>
       </Bar>
       <Button>
       <Link to={"/historico"}><button>Histórico</button></Link>

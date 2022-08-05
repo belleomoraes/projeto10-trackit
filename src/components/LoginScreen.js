@@ -6,11 +6,8 @@ import Initiate from "./InitiateStyle";
 import axios from "axios";
 
 export default function LoginScreen() {
-  const { setChange } = useContext(UserContext);
-  const [loginInfo, setLoginInfo] = useState({
-    email: "",
-    password: "",
-  });
+  const { setChange, loginInfo, setLoginInfo, setToken, setImg } = useContext(UserContext);
+  
   const navigate = useNavigate();
 
   function ChangeScreen() {
@@ -25,6 +22,8 @@ export default function LoginScreen() {
     );
 
     promise.then((res) => {
+      setToken(res.data.token)
+      setImg(res.data.image)
       navigate("/habitos");
     });
 
@@ -53,8 +52,7 @@ export default function LoginScreen() {
       [e.target.name]: e.target.value,
     });
   }
-
-  console.log(loginInfo);
+  
 
   return (
     <Initiate>
