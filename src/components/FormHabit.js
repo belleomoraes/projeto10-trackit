@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { useContext, useState } from "react";
 import UserContext from "./UserContext";
-import Habits from "./HabitsScreen";
+import axios from "axios";
+import WithHabit from "./WithHabit";
+import HabitsScreen from "./HabitsScreen"
 
 export default function FormHabit() {
+  const [control, setControl] = useState(false);
   const [habit, setHabit] = useState({
     name: "",
-    days: [],
+    days: [0, 1]
   });
   const { config } = useContext(UserContext);
 
@@ -17,27 +20,47 @@ export default function FormHabit() {
     });
   }
 
-  console.log(habit)
-  return (
-    <CreatingHabit>
-      <form>
-        <input type="text" placeholder="nome do hábito" name="name" value={habit.name} onChange={handleHabit} />
-      </form>
-      <Days>
-        <div>D</div>
-        <div>S</div>
-        <div>T</div>
-        <div>Q</div>
-        <div>Q</div>
-        <div>S</div>
-        <div>S</div>
-      </Days>
-      <Button>
-        <button>Cancelar</button>
-        <button>Salvar</button>
-      </Button>
-    </CreatingHabit>
-  );
+  function sendHabit() {
+    const promise = axios.post(
+      "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", habit,
+      config
+    );
+    promise.then((res) => {
+      setControl(true);
+      setHabit(res.data);
+    });
+  }
+
+  function CreateHabit() {
+    return (
+      <CreatingHabit>
+        <form>
+          <input
+            type="text"
+            placeholder="nome do hábito"
+            name="name"
+            value={habit.name}
+            onChange={handleHabit}
+          />
+        </form>
+        <Days>
+          <div>D</div>
+          <div>S</div>
+          <div>T</div>
+          <div>Q</div>
+          <div>Q</div>
+          <div>S</div>
+          <div>S</div>
+        </Days>
+        <Button>
+          <button>Cancelar</button>
+          <button onClick={sendHabit}>Salvar</button>
+        </Button>
+      </CreatingHabit>
+    );
+  }
+  console.log(habit);
+  return control ? <WithHabit /> : <CreateHabit />;
 }
 
 const CreatingHabit = styled.div`
