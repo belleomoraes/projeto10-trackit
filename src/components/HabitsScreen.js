@@ -20,9 +20,6 @@ export default function Habits() {
     });
   }, []);
 
-  console.log(controlHabit)
-  console.log(controlHabit.length)
-
   return (
     <>
       <Head />
@@ -31,7 +28,7 @@ export default function Habits() {
         <button onClick={() => setNewHabit(true)}>+</button>
       </SubHead>
       {!newHabit ? "" : <FormHabit />}
-      {controlHabit.length === 0 ?  <NoHabit /> : <WithHabit/>}
+      {controlHabit.length === 0 ?  <NoHabit /> : <WithHabit controlHabit = {controlHabit}/>}
       <Menu />
     </>
   );

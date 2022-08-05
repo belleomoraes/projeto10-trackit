@@ -1,9 +1,10 @@
 import styled from "styled-components";
-export default function WithHabit() {
-  return (
+export default function WithHabit({ controlHabit }) {
+  console.log(controlHabit);
+  return controlHabit.map((habit) => (
     <CreatingHabit>
       <span>
-        <h1>Ler 1 capitulo de livro</h1>
+        <h1>{habit.name}</h1>
         <ion-icon name="trash-outline"></ion-icon>
       </span>
 
@@ -17,7 +18,7 @@ export default function WithHabit() {
         <div>S</div>
       </Days>
     </CreatingHabit>
-  );
+  ));
 }
 
 const CreatingHabit = styled.div`
@@ -52,7 +53,6 @@ const CreatingHabit = styled.div`
 const Days = styled.div`
   display: flex;
   font-size: 4vh;
- 
 
   div {
     display: flex;
@@ -66,5 +66,3 @@ const Days = styled.div`
     margin-right: 1%;
   }
 `;
-
-
