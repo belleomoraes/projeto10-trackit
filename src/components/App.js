@@ -3,7 +3,7 @@ import "../reset.css";
 import GlobalStyle from "./GlobalStyle";
 import UserContext from "./UserContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainScreen from "./MainScreen";
+import LoginScreen from "./LoginScreen";
 import RegistrationScreen from "./RegistrationScreen"
 import HabitsScreen from "./HabitsScreen"
 import HistoryScreen from "./HistoryScreen"
@@ -18,7 +18,7 @@ export default function App() {
 <GlobalStyle />
 <BrowserRouter>
 <Routes>
-<Route path="/" element={<MainScreen />} />
+<Route path="/" element={<LoginScreen />} />
 <Route path="/cadastro" element={<RegistrationScreen />} />
 <Route path="/habitos" element={<HabitsScreen />} />
 <Route path="/hoje" element={<TodayScreen />} />
