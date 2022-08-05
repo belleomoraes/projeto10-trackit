@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import UserContext from "./UserContext";
 import logo from "../assets/logo.jpg";
 import Initiate from "./InitiateStyle";

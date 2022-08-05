@@ -1,30 +1,46 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { useContext, useState } from "react";
+import UserContext from "./UserContext";
+import Habits from "./HabitsScreen";
 
 export default function FormHabit() {
+  const [habit, setHabit] = useState({
+    name: "",
+    days: [],
+  });
+  const { config } = useContext(UserContext);
 
-    return (
-      <CreatingHabit>
-        <form>
-          <input type="text" placeholder="nome do hábito" />
-        </form>
-        <Days>
-          <div>D</div>
-          <div>S</div>
-          <div>T</div>
-          <div>Q</div>
-          <div>Q</div>
-          <div>S</div>
-          <div>S</div>
-        </Days>
-        <Button>
-        <button>Cancelar</button>
-        <button>Salvar</button>
-        </Button>
-      </CreatingHabit>
-    );
+  function handleHabit(e) {
+    setHabit({
+      ...habit,
+      [e.target.name]: e.target.value,
+    });
   }
 
-  const CreatingHabit = styled.div`
+  console.log(habit)
+  return (
+    <CreatingHabit>
+      <form>
+        <input type="text" placeholder="nome do hábito" name="name" value={habit.name} onChange={handleHabit} />
+      </form>
+      <Days>
+        <div>D</div>
+        <div>S</div>
+        <div>T</div>
+        <div>Q</div>
+        <div>Q</div>
+        <div>S</div>
+        <div>S</div>
+      </Days>
+      <Button>
+        <button>Cancelar</button>
+        <button>Salvar</button>
+      </Button>
+    </CreatingHabit>
+  );
+}
+
+const CreatingHabit = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,16 +83,16 @@ const Days = styled.div`
 `;
 
 const Button = styled.div`
-display: flex;
-justify-content:flex-end;
-align-items: center;
-padding: 5%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5%;
 
-button {
+  button {
     color: #f4f4f4;
     border: none;
     border-radius: 3px;
-    background-color: #52B6FF;
+    background-color: #52b6ff;
     width: 14vw;
     height: 5vh;
     font-size: 90%;
@@ -85,11 +101,5 @@ button {
     align-items: center;
     font-weight: bold;
     margin: 1%;
-}
-`
-
-
-
-
-
-  
+  }
+`;
