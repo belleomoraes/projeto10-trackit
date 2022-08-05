@@ -1,17 +1,19 @@
-import logo from "../assets/logo.jpg";
-import Initiate from "./InitiateStyle";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
+import Initiate from "./InitiateStyle";
+import logo from "../assets/logo.jpg";
 
-export default function LoginScreen() {
+
+
+export default function RegistrationScreen() {
   const [userInfo, setUserInfo] = useState({
     email: "",
     name: "",
     image: "",
     password: "",
   });
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   function handleForm(e) {
     setUserInfo({
@@ -23,7 +25,7 @@ export default function LoginScreen() {
   console.log(userInfo);
 
   function sendForm() {
-    console.log(userInfo);
+    
     const promise = axios.post(
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up",
       userInfo
@@ -34,7 +36,6 @@ export default function LoginScreen() {
     });
 
     promise.catch((res) => {
-      console.log(res)
       if (res.response.status === 422) {
         alert("Preencha todos os campos")
       }
@@ -82,7 +83,6 @@ export default function LoginScreen() {
       <Link to={"/"}>
         <div>Já tem uma conta? Faça login!</div>
       </Link>
-    </Initiate>
+      </Initiate>
   );
-  
 }
