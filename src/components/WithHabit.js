@@ -1,25 +1,27 @@
 import styled from "styled-components";
-export default function WithHabit({ controlHabit }) {
-  console.log(controlHabit);
-  return controlHabit.map((habit) => (
-    <CreatingHabit>
-      <span>
-        <h1>{habit.name}</h1>
-        <ion-icon name="trash-outline"></ion-icon>
-      </span>
+export default function WithHabit({controlHabit}) {
+console.log(controlHabit)
+  return (
+      <CreatingHabit>
+    <span>
+      <h1>{controlHabit.name}</h1>
+      <ion-icon name="trash-outline"></ion-icon>
+    </span>
 
-      <Days>
-        <div>D</div>
-        <div>S</div>
-        <div>T</div>
-        <div>Q</div>
-        <div>Q</div>
-        <div>S</div>
-        <div>S</div>
-      </Days>
-    </CreatingHabit>
-  ));
+    <Days>
+      <div>D</div>
+      <div>S</div>
+      <div>T</div>
+      <div>Q</div>
+      <div>Q</div>
+      <div>S</div>
+      <div>S</div>
+    </Days>
+  </CreatingHabit>
+  )
 }
+
+    
 
 const CreatingHabit = styled.div`
   display: flex;
@@ -53,6 +55,7 @@ const CreatingHabit = styled.div`
 const Days = styled.div`
   display: flex;
   font-size: 4vh;
+ 
 
   div {
     display: flex;

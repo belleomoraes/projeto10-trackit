@@ -1,34 +1,37 @@
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import UserContext from "./UserContext";
 import logo from "../assets/logo.jpg";
 import Initiate from "./InitiateStyle";
 import axios from "axios";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function LoginScreen() {
-  const { setChange, loginInfo, setLoginInfo, setToken, setImg } = useContext(UserContext);
-  
+  const { setChange, loginInfo, setLoginInfo, setToken, img, setImg } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
   function ChangeScreen() {
     setChange(false);
     navigate("/cadastro");
   }
 
   function sendInfoLogin() {
+    setLoading(true);
     const promise = axios.post(
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",
       loginInfo
     );
 
     promise.then((res) => {
-      setToken(res.data.token)
-      setImg(res.data.image)
+      setLoading(false);
+      setToken(res.data.token);
+      setImg(res.data.image);
       navigate("/habitos");
     });
 
     promise.catch((res) => {
       if (res.response.status === 422) {
+        setLoading(false);
         alert("Preencha todos os campos");
         setLoginInfo({
           email: "",
@@ -37,6 +40,7 @@ export default function LoginScreen() {
       }
 
       if (res.response.status === 401) {
+        setLoading(false);
         alert("E-mail ou senha incorretos");
         setLoginInfo({
           email: "",
@@ -47,15 +51,15 @@ export default function LoginScreen() {
   }
 
   function handleLogin(e) {
+    e.preventDefault();
     setLoginInfo({
       ...loginInfo,
       [e.target.name]: e.target.value,
     });
   }
-  
-
+  console.log(img);
   return (
-    <Initiate>
+    <Initiate loading={loading}>
       <img src={logo} />
       <form>
         <input
@@ -73,7 +77,13 @@ export default function LoginScreen() {
           onChange={handleLogin}
         />
       </form>
-      <button onClick={sendInfoLogin}>Entrar</button>
+      {loading ? (
+        <button onClick={sendInfoLogin}>
+          <ThreeDots color="#ffffff" height={80} width={60} />
+        </button>
+      ) : (
+        <button onClick={sendInfoLogin}>Entrar</button>
+      )}
       <div onClick={ChangeScreen}>Não tem uma conta? Cadastre-se</div>
     </Initiate>
   );

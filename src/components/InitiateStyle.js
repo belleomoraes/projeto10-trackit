@@ -22,6 +22,8 @@ input {
     margin: 3px ;
     font-size: 100%;
     padding: 5%;
+    background-color: ${(props) => (props.loading ? "#F4F4F4" :  "#ffffff" )};
+    color: #D5D5D5;
 }
 
 input::placeholder {
@@ -42,6 +44,7 @@ button {
     padding: 3%;
     font-weight: bold;
 }
+
 
 div {
 margin-top: 2%;
