@@ -7,6 +7,7 @@ justify-content: center;
 align-items: center ;
 background-color: #ffffff;
 
+
 img {
     margin: 5%;
 }
@@ -43,6 +44,7 @@ button {
     align-items: center;
     padding: 3%;
     font-weight: bold;
+    opacity: ${(props) => (props.loading ? "0.7" :  "1" )};
 }
 
 
@@ -51,6 +53,7 @@ margin-top: 2%;
 color: #52B6FF;
 text-decoration: underline;
 font-size: 75%;
+opacity: ${(props) => (props.loading ? "0.7" :  "1" )};
 }
 
 `

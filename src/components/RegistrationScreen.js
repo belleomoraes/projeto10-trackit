@@ -2,14 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Initiate from "./InitiateStyle";
 import logo from "../assets/logo.jpg";
-import { useContext} from "react";
+import { useContext, useState } from "react";
 import UserContext from "./UserContext";
-
-
+import { ThreeDots } from "react-loader-spinner";
 
 export default function RegistrationScreen() {
-  const { userInfo, setUserInfo} = useContext(UserContext);
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
+  const { userInfo, setUserInfo } = useContext(UserContext);
+  const navigate = useNavigate();
 
   function handleForm(e) {
     setUserInfo({
@@ -21,29 +21,33 @@ export default function RegistrationScreen() {
   console.log(userInfo);
 
   function sendForm() {
-    
+    setLoading(true);
     const promise = axios.post(
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up",
       userInfo
     );
 
     promise.then((res) => {
+      setLoading(false);
       navigate("/");
     });
 
     promise.catch((res) => {
+     
       if (res.response.status === 422) {
-        alert("Preencha todos os campos")
+        setLoading(false);
+        alert("Preencha todos os campos");
       }
 
       if (res.response.status === 409) {
-        alert("Este e-mail já está cadastrado")
+        setLoading(false);
+        alert("Este e-mail já está cadastrado");
       }
-    })
+    });
   }
-  
+
   return (
-    <Initiate>
+    <Initiate loading={loading}>
       <img src={logo} />
       <form>
         <input
@@ -75,10 +79,16 @@ export default function RegistrationScreen() {
           onChange={handleForm}
         />
       </form>
+      {loading ? (
+        <button onClick={sendForm}>
+          <ThreeDots color="#ffffff" height={80} width={60} />
+        </button>
+      ) : (
         <button onClick={sendForm}>Cadastrar</button>
+      )}
       <Link to={"/"}>
         <div>Já tem uma conta? Faça login!</div>
       </Link>
-      </Initiate>
+    </Initiate>
   );
 }
