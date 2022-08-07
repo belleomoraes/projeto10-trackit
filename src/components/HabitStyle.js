@@ -8,7 +8,8 @@ const HabitStyle = styled.div`
   border-radius: 5px;
   width: 89%;
   margin: 0 auto;
-  margin-bottom: 5%;
+  margin-bottom: 20%;
+
 
   input {
     border: 1px solid #d5d5d5;
@@ -30,6 +31,7 @@ const HabitStyle = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 6%;
   }
 
   h1 {

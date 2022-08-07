@@ -10,7 +10,7 @@ import TodayScreen from "./TodayScreen";
 import { useState } from "react";
 
 export default function App() {
-  const [img, setImg] = useState("")
+  const [img, setImg] = useState("");
   const [change, setChange] = useState(true);
   const [loginInfo, setLoginInfo] = useState({
     email: "",
@@ -33,10 +33,21 @@ export default function App() {
 
   const [habit, setHabit] = useState({
     name: "",
-    days: []
+    days: [],
   });
 
   const [control, setControl] = useState(false);
+  let daysFixed = [
+    { id: 0, name: "D" },
+    { id: 1, name: "S" },
+    { id: 2, name: "T" },
+    { id: 3, name: "Q" },
+    { id: 4, name: "Q" },
+    { id: 5, name: "S" },
+    { id: 6, name: "S" },
+  ];
+
+  const [clicked, setClicked] = useState(false);
 
   return (
     <UserContext.Provider
@@ -50,12 +61,15 @@ export default function App() {
         setUserInfo,
         token,
         setToken,
-        img, 
+        img,
         setImg,
         habit,
         setHabit,
         control,
-        setControl
+        setControl,
+        daysFixed,
+        clicked,
+        setClicked,
       }}
     >
       <GlobalStyle />

@@ -25,6 +25,7 @@ const HeadStyle = styled.div`
   position: fixed;
   top: 0;
   padding: 4%;
+  z-index: 1;
   
 
 div {

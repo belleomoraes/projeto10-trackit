@@ -17,6 +17,7 @@ function RenderDays({ daysFixed, setHabit, habit }) {
 }
 function Day({ day, habit, setHabit }) {
   const [clicked, setClicked] = useState();
+  day.status = clicked
   function DaySelection() {
     setClicked(true);
     setHabit(habit.days.push(day.id));
@@ -28,17 +29,9 @@ function Day({ day, habit, setHabit }) {
   );
 }
 export default function CreateHabit() {
-  const { config, habit, setHabit, setControl } = useContext(UserContext);
-  const [clicked, setClicked] = useState(false);
-  let daysFixed = [
-    { id: 0, name: "D" },
-    { id: 1, name: "S" },
-    { id: 2, name: "T" },
-    { id: 3, name: "Q" },
-    { id: 4, name: "Q" },
-    { id: 5, name: "S" },
-    { id: 6, name: "S" },
-  ];
+  const { config, habit, setHabit, setControl, daysFixed, clicked, setClicked } = useContext(UserContext);
+
+  
 
   function handleHabit(e) {
     setHabit({
