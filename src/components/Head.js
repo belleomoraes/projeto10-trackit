@@ -15,26 +15,27 @@ export default function Head() {
 }
 
 const HeadStyle = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Playball&display=swap");
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #126ba5;
   width: 100%;
-  height: 16vh;
+  height: 12%;
   color: #ffffff;
-  font-family: "Playball", cursive;
-  font-size: 7vh;
-  position: absolute;
+  position: fixed;
   top: 0;
+  padding: 4%;
+  
 
-  div {
-    margin-left: 5%;
-  }
+div {
+  width: 30%;
+  font-size: 10vw;
+  font-family: "Playball", cursive; 
+}
+
   img {
     border-radius: 50%;
     width: 10vw;
-    margin-right: 5%;
+    height: 8vh;
   }
 `;

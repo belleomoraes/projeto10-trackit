@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import Button from "./ButtonStyle";
 import {
     CircularProgressbar,
     buildStyles
@@ -10,7 +11,7 @@ export default function Menu() {
     return (
       <MenuStyle>
       <Button>
-      <Link to={"/habitos"}> <button>Hábitos</button></Link>
+      <Link to={"/habitos"}> <div>Hábitos</div></Link>
       </Button>
       <Bar>
       <Link to={"/hoje"}> <CircularProgressbar value={percentage} text={`${"Hoje"}`}
@@ -24,7 +25,7 @@ export default function Menu() {
       })} /></Link>
       </Bar>
       <Button>
-      <Link to={"/historico"}><button>Histórico</button></Link>
+      <Link to={"/historico"}><div>Histórico</div></Link>
       </Button>
       </MenuStyle>
     )
@@ -35,34 +36,14 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 margin-top: 5%;
-position: absolute;
+position: fixed;
 bottom: 0;
 width: 100%;
+z-index: 1;
+background-color: #ffffff ;
 `
 
 const Bar = styled.div `
 width: 15vw;
 
-`
-
-const Button = styled.div`
-display: flex;
-justify-content:flex-end;
-align-items: center;
-padding: 5%;
-
-button {
-    color: #f4f4f4;
-    border: none;
-    border-radius: 3px;
-    background-color: #52B6FF;
-    width: 14vw;
-    height: 5vh;
-    font-size: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    margin: 1%;
-}
 `

@@ -7,7 +7,7 @@ align-items: center;
 color: #126BA5;
 padding: 5%;
 font-size: 4.7vh;
-margin-top: 18vh;
+margin-top: 12vh;
 
 div {
     margin-left: 5%;
@@ -20,8 +20,11 @@ button {
     color: #FFFFFF;
     font-weight: bold;
     font-size: 6vh;
-    height: 9vh;
-    width: 8vw;
+    height: 6vh;
+    width: 7.2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 `
 

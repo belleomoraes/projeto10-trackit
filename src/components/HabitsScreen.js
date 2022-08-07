@@ -10,7 +10,7 @@ import UserContext from "./UserContext";
 export default function Habits() {
   const [controlHabit, setControlHabit] = useState({});
   const [newHabit, setNewHabit] = useState(false);
-  const { config } = useContext(UserContext);
+  const { config, habit } = useContext(UserContext);
   useEffect(() => {
     const promise = axios.get(
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config
@@ -20,6 +20,8 @@ export default function Habits() {
     });
   }, []);
 
+  console.log(habit)
+  console.log(config)
   return (
     <>
       <Head />

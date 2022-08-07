@@ -36,23 +36,23 @@ button {
     border: none;
     border-radius: 3px;
     background-color: #52B6FF;
+    font-size: 1.8vh;
     width: 50vw;
     height: 5vh;
-    font-size: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 3%;
-    font-weight: bold;
+    margin-top: 3%;
     opacity: ${(props) => (props.loading ? "0.7" :  "1" )};
 }
 
 
 div {
-margin-top: 2%;
+margin-top: 5%;
 color: #52B6FF;
 text-decoration: underline;
-font-size: 75%;
+font-size: 1.8vh;
 opacity: ${(props) => (props.loading ? "0.7" :  "1" )};
 }
 

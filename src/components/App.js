@@ -31,6 +31,13 @@ export default function App() {
     password: "",
   });
 
+  const [habit, setHabit] = useState({
+    name: "",
+    days: []
+  });
+
+  const [control, setControl] = useState(false);
+
   return (
     <UserContext.Provider
       value={{
@@ -44,7 +51,11 @@ export default function App() {
         token,
         setToken,
         img, 
-        setImg
+        setImg,
+        habit,
+        setHabit,
+        control,
+        setControl
       }}
     >
       <GlobalStyle />
