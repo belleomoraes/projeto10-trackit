@@ -7,20 +7,16 @@ import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
 
 export default function LoginScreen() {
- 
-  const { setChange, loginInfo, setLoginInfo, token, setToken, img, setImg } =
-    useContext(UserContext);
+  const { setChange } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [loginInfo, setLoginInfo] = useState({
+    email: "",
+    password: "",
+  });
   function ChangeScreen() {
     setChange(false);
     navigate("/cadastro");
-  }
-  const tokenLocal = localStorage.getItem("myValueInLocalStorage");
-
-  if(tokenLocal){
-    navigate("/habitos");
-
   }
 
   function sendInfoLogin() {
@@ -32,9 +28,8 @@ export default function LoginScreen() {
 
     promise.then((res) => {
       setLoading(false);
-      setToken();
-      localStorage.setItem("myValueInLocalStorage",res.data.token );
-      setImg(res.data.image);
+      localStorage.setItem("myValueInLocalStorage", res.data.token);
+      localStorage.setItem("myImageInLocalStorage", res.data.image);
       navigate("/habitos");
     });
 
@@ -66,7 +61,6 @@ export default function LoginScreen() {
       [e.target.name]: e.target.value,
     });
   }
-  console.log(img);
   return (
     <Initiate loading={loading}>
       <img src={logo} />

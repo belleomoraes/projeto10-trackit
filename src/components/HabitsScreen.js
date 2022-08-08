@@ -4,13 +4,12 @@ import FormHabit from "./FormHabit";
 import Menu from "./Menu";
 import NoHabit from "./NoHabit";
 import WithHabit from "./WithHabit";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import UserContext from "./UserContext";
 export default function Habits() {
   const [controlHabit, setControlHabit] = useState([]);
   const [newHabit, setNewHabit] = useState(false);
-
+  const img = localStorage.getItem("myImageInLocalStorage");
   useEffect(() => {
     const tokenLocal = localStorage.getItem("myValueInLocalStorage");
     const config = {
@@ -18,7 +17,6 @@ export default function Habits() {
         Authorization: `Bearer ${tokenLocal}`,
       },
     };
-
     const promise = axios.get(
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
       config
@@ -28,11 +26,9 @@ export default function Habits() {
     });
   }, []);
 
-  console.log(controlHabit);
-
   return (
     <>
-      <Head />
+      <Head img={img} />
       <SubHead>
         <div>Meus Hábitos</div>
         <button onClick={() => setNewHabit(true)}>+</button>

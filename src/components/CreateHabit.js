@@ -5,6 +5,7 @@ import HabitStyle from "./HabitStyle";
 import Days from "./DaysStyle";
 import axios from "axios";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 function RenderDays({ daysFixed, setHabit, habit }) {
   return (
@@ -30,6 +31,7 @@ function Day({ day, habit, setHabit }) {
 }
 export default function CreateHabit() {
   const { habit, setHabit, setControl, daysFixed, clicked, setClicked } = useContext(UserContext);
+  const navigate = useNavigate();
 
   function handleHabit(e) {
     setHabit({
@@ -54,6 +56,7 @@ export default function CreateHabit() {
     promise.then((res) => {
       setControl(true);
       setHabit(res.data);
+      navigate("/habitos")
     });
   }
 

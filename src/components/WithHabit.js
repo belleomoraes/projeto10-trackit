@@ -3,8 +3,7 @@ import UserContext from "./UserContext";
 import Days from "./DaysStyle";
 import HabitStyle from "./HabitStyle";
 import styled from "styled-components";
-
-
+import axios from "axios";
 
 function RenderDays({ daysFixed, habit }) {
   return (
@@ -16,19 +15,22 @@ function RenderDays({ daysFixed, habit }) {
   );
 }
 function Day({ day, habit }) {
-  const [clicked, setClicked] = useState(false);
-
-  console.log(day, habit.name, habit.days, day.id);
-
-  if (day.id === habit.days) {
-    console.log("entrou comparaçao day");
-    setClicked(true);
-  }
-
-  return <DayStyle clicked={clicked}>{day.name}</DayStyle>;
+  return <DayStyle>{day.name}</DayStyle>;
 }
 export default function WithHabit({ controlHabit }) {
-  const { daysFixed, config } = useContext(UserContext);
+  const { daysFixed } = useContext(UserContext);
+  console.log(controlHabit);
+
+  // function DeleteHabit() {
+  //   const tokenLocal = localStorage.getItem("myValueInLocalStorage");
+  //   const config = {
+  //     headers: {
+  //       Authorization: `Bearer ${tokenLocal}`,
+  //     },
+  //   };
+
+  //   const promise = axios.delete("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO")
+  // }
 
   return (
     <HabitStyle>
@@ -37,14 +39,13 @@ export default function WithHabit({ controlHabit }) {
           <>
             <span>
               <h1>{habit.name}</h1>
-              <ion-icon name="trash-outline" ></ion-icon>
+              <ion-icon name="trash-outline"></ion-icon>
             </span>
             <RenderDays daysFixed={daysFixed} habit={habit} />
           </>
         ))}
     </HabitStyle>
   );
-
 }
 
 const DayStyle = styled.div`

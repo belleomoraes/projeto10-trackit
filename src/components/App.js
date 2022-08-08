@@ -10,25 +10,11 @@ import TodayScreen from "./TodayScreen";
 import { useState } from "react";
 
 export default function App() {
-  const [img, setImg] = useState("");
   const [change, setChange] = useState(true);
-  const [loginInfo, setLoginInfo] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [userInfo, setUserInfo] = useState({
-    email: "",
-    name: "",
-    image: "",
-    password: "",
-  });
-
   const [habit, setHabit] = useState({
     name: "",
     days: [],
   });
-
   const [control, setControl] = useState(false);
   let daysFixed = [
     { id: 0, name: "D" },
@@ -45,12 +31,6 @@ export default function App() {
       value={{
         change,
         setChange,
-        loginInfo,
-        setLoginInfo,
-        userInfo,
-        setUserInfo,
-        img,
-        setImg,
         habit,
         setHabit,
         control,
