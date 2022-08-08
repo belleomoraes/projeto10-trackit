@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
-import Button from "./ButtonStyle";
+import Button from "../Styles/ButtonStyle";
 import {
     CircularProgressbar,
     buildStyles

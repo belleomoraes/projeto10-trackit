@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import UserContext from "./UserContext";
-import Days from "./DaysStyle";
-import HabitStyle from "./HabitStyle";
+import { useContext } from "react";
+import UserContext from "../../context/UserContext";
+import Days from "../Styles/DaysStyle";
+import HabitStyle from "../Styles/HabitStyle";
 import styled from "styled-components";
-import axios from "axios";
+
 
 function RenderDays({ daysFixed, habit }) {
   return (

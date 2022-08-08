@@ -1,5 +1,5 @@
 
-import Info from "./InfoStyle";
+import Info from "../Styles/InfoStyle";
 export default function NoHabit() {
     return (
       <Info>

@@ -1,7 +1,7 @@
-import SubHead from "./SubHeadStyle";
-import Head from './Head';
-import Menu from './Menu';
-import Info from './InfoStyle'
+import SubHead from "../Styles/SubHeadStyle";
+import Head from '../Geral/Head';
+import Menu from '../Geral/Menu';
+import Info from '../Styles/InfoStyle'
 export default function HistoryScreen() {
     return (
         <>

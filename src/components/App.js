@@ -1,12 +1,12 @@
 import "../reset.css";
-import GlobalStyle from "./GlobalStyle";
-import UserContext from "./UserContext";
+import GlobalStyle from "./Styles/GlobalStyle";
+import UserContext from "../context/UserContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginScreen from "./LoginScreen";
-import RegistrationScreen from "./RegistrationScreen";
-import HabitsScreen from "./HabitsScreen";
-import HistoryScreen from "./HistoryScreen";
-import TodayScreen from "./TodayScreen";
+import LoginScreen from "./Login/LoginScreen";
+import RegistrationScreen from "./Login/RegistrationScreen";
+import HabitsScreen from "./Habit/HabitsScreen";
+import HistoryScreen from "./History/HistoryScreen";
+import TodayScreen from "./Today/TodayScreen";
 import { useState } from "react";
 
 export default function App() {

@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import UserContext from "./UserContext";
-import Button from "./ButtonStyle";
-import HabitStyle from "./HabitStyle";
-import Days from "./DaysStyle";
+import UserContext from "../../context/UserContext";
+import Button from "../Styles/ButtonStyle";
+import HabitStyle from "../Styles/HabitStyle";
+import Days from "../Styles/DaysStyle";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";

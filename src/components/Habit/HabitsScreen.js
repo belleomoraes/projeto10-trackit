@@ -1,9 +1,9 @@
-import Head from "./Head";
-import SubHead from "./SubHeadStyle";
-import FormHabit from "./FormHabit";
-import Menu from "./Menu";
-import NoHabit from "./NoHabit";
-import WithHabit from "./WithHabit";
+import Head from "../Geral/Head";
+import SubHead from "../Styles/SubHeadStyle";
+import FormHabit from "../Habit/FormHabit";
+import Menu from "../Geral/Menu";
+import NoHabit from "../Habit/NoHabit";
+import WithHabit from "../Habit/WithHabit";
 import { useEffect, useState } from "react";
 import axios from "axios";
 export default function Habits() {

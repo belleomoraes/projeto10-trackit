@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import UserContext from "./UserContext";
-import logo from "../assets/logo.jpg";
-import Initiate from "./InitiateStyle";
+import UserContext from "../../context/UserContext";
+import logo from "../../assets/logo.jpg";
+import Initiate from "../Styles/InitiateStyle"
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
 
