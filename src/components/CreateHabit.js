@@ -17,7 +17,7 @@ function RenderDays({ daysFixed, setHabit, habit }) {
 }
 function Day({ day, habit, setHabit }) {
   const [clicked, setClicked] = useState();
-  day.status = clicked
+  day.status = clicked;
   function DaySelection() {
     setClicked(true);
     setHabit(habit.days.push(day.id));
@@ -29,9 +29,7 @@ function Day({ day, habit, setHabit }) {
   );
 }
 export default function CreateHabit() {
-  const { config, habit, setHabit, setControl, daysFixed, clicked, setClicked } = useContext(UserContext);
-
-  
+  const { habit, setHabit, setControl, daysFixed, clicked, setClicked } = useContext(UserContext);
 
   function handleHabit(e) {
     setHabit({
@@ -41,6 +39,13 @@ export default function CreateHabit() {
   }
 
   function sendHabit() {
+    const tokenLocal = localStorage.getItem("myValueInLocalStorage");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${tokenLocal}`,
+      },
+    };
+
     const promise = axios.post(
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
       habit,

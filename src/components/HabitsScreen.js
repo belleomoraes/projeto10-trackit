@@ -10,8 +10,15 @@ import UserContext from "./UserContext";
 export default function Habits() {
   const [controlHabit, setControlHabit] = useState([]);
   const [newHabit, setNewHabit] = useState(false);
-  const { config } = useContext(UserContext);
+
   useEffect(() => {
+    const tokenLocal = localStorage.getItem("myValueInLocalStorage");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${tokenLocal}`,
+      },
+    };
+
     const promise = axios.get(
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
       config

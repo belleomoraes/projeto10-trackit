@@ -17,13 +17,6 @@ export default function App() {
     password: "",
   });
 
-  const [token, setToken] = useState("");
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
   const [userInfo, setUserInfo] = useState({
     email: "",
     name: "",
@@ -47,8 +40,6 @@ export default function App() {
     { id: 6, name: "S" },
   ];
 
-  const [clicked, setClicked] = useState(false);
-
   return (
     <UserContext.Provider
       value={{
@@ -56,11 +47,8 @@ export default function App() {
         setChange,
         loginInfo,
         setLoginInfo,
-        config,
         userInfo,
         setUserInfo,
-        token,
-        setToken,
         img,
         setImg,
         habit,
@@ -68,8 +56,6 @@ export default function App() {
         control,
         setControl,
         daysFixed,
-        clicked,
-        setClicked,
       }}
     >
       <GlobalStyle />

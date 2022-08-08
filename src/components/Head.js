@@ -2,10 +2,8 @@ import styled from "styled-components";
 import { useContext } from "react";
 import UserContext from "./UserContext";
 
-
 export default function Head() {
   const { img } = useContext(UserContext);
-  console.log(img)
   return (
     <HeadStyle>
       <div>TrackIt</div>
@@ -26,13 +24,12 @@ const HeadStyle = styled.div`
   top: 0;
   padding: 4%;
   z-index: 1;
-  
 
-div {
-  width: 30%;
-  font-size: 10vw;
-  font-family: "Playball", cursive; 
-}
+  div {
+    width: 30%;
+    font-size: 10vw;
+    font-family: "Playball", cursive;
+  }
 
   img {
     border-radius: 50%;
