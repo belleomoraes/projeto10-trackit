@@ -74,6 +74,10 @@ export default function CreateHabit({ setNewHabit }) {
     });
   }
 
+  function Cancel() {
+    setNewHabit(false);
+  }
+  
   return (
     <HabitStyle>
       <form>
@@ -87,7 +91,7 @@ export default function CreateHabit({ setNewHabit }) {
       </form>
       <RenderDays daysFixed={daysFixed} habit={habit} setHabit={setHabit} />
       <Button>
-        <div>Cancelar</div>
+        <div onClick={Cancel}>Cancelar</div>
         <button onClick={sendHabit}>Salvar</button>
       </Button>
     </HabitStyle>
