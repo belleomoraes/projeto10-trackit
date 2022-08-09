@@ -8,7 +8,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 function RenderDays({ daysFixed, setHabit, habit }) {
-  
   return (
     <Days>
       {daysFixed.map((day) => (
@@ -18,14 +17,21 @@ function RenderDays({ daysFixed, setHabit, habit }) {
   );
 }
 function Day({ day, habit, setHabit }) {
-  
-
   const [clicked, setClicked] = useState();
+  const [control, setControl] = useState(0);
 
   function DaySelection() {
-    setClicked(true);
-    habit.days.push(day.id)
-   
+    if (control === 0) {
+      setClicked(true);
+      habit.days.push(day.id);
+      setControl(1);
+    }
+
+    if (control === 1) {
+      setClicked(false);
+      habit.days = habit.days.filter((d) => d !== day.id);
+      setControl(0);
+    }
   }
   return (
     <DayStyle clicked={clicked} onClick={DaySelection}>
@@ -33,7 +39,7 @@ function Day({ day, habit, setHabit }) {
     </DayStyle>
   );
 }
-export default function CreateHabit({ setNewHabit, newHabit }) {
+export default function CreateHabit({ setNewHabit }) {
   const navigate = useNavigate();
   const { setControl, daysFixed } = useContext(UserContext);
   const [habit, setHabit] = useState({
@@ -49,7 +55,6 @@ export default function CreateHabit({ setNewHabit, newHabit }) {
   }
 
   function sendHabit() {
-    
     const tokenLocal = localStorage.getItem("myValueInLocalStorage");
     const config = {
       headers: {
@@ -66,7 +71,6 @@ export default function CreateHabit({ setNewHabit, newHabit }) {
       setControl(true);
       setHabit(res.data);
       setNewHabit(false);
-      
     });
   }
 
