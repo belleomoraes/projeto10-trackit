@@ -6,7 +6,7 @@ import Days from "../Styles/DaysStyle";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
+import { ThreeDots } from "react-loader-spinner";
 function RenderDays({ daysFixed, setHabit, habit }) {
   return (
     <Days>
@@ -46,6 +46,7 @@ export default function CreateHabit({ setNewHabit }) {
     name: "",
     days: [],
   });
+  const [loading, setLoading] = useState(false);
 
   function handleHabit(e) {
     setHabit({
@@ -55,6 +56,7 @@ export default function CreateHabit({ setNewHabit }) {
   }
 
   function sendHabit() {
+    setLoading(true)
     const tokenLocal = localStorage.getItem("myValueInLocalStorage");
     const config = {
       headers: {
@@ -68,6 +70,7 @@ export default function CreateHabit({ setNewHabit }) {
       config
     );
     promise.then((res) => {
+      setLoading(false)
       setControl(true);
       setHabit(res.data);
       setNewHabit(false);
@@ -79,7 +82,7 @@ export default function CreateHabit({ setNewHabit }) {
   }
   
   return (
-    <HabitStyle>
+    <HabitStyle loading = {loading}>
       <form>
         <input
           type="text"
@@ -90,10 +93,12 @@ export default function CreateHabit({ setNewHabit }) {
         />
       </form>
       <RenderDays daysFixed={daysFixed} habit={habit} setHabit={setHabit} />
-      <Button>
-        <div onClick={Cancel}>Cancelar</div>
-        <button onClick={sendHabit}>Salvar</button>
+      <Button >
+      {!loading ?(<><div onClick={Cancel}>Cancelar</div>
+        <button onClick={sendHabit}>Salvar</button></>) :<><div >Cancelar</div>
+        <button><ThreeDots color="#ffffff" height={80} width={60} /></button></> }
       </Button>
+
     </HabitStyle>
   );
 }

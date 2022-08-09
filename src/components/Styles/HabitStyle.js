@@ -9,6 +9,7 @@ const HabitStyle = styled.div`
   width: 89%;
   margin: 0 auto;
   margin-bottom: 20%;
+  opacity: ${(props) => (props.loading ? "0.7" :  "1" )};
 
 
   input {
@@ -18,6 +19,7 @@ const HabitStyle = styled.div`
     margin: 8px;
     font-size: 2.8vh;
     padding: 5%;
+    background-color: ${(props) => (props.loading ? "#F4F4F4" :  "#ffffff" )};
   }
 
   input::placeholder {
