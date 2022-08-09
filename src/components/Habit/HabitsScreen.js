@@ -1,6 +1,6 @@
 import Head from "../Geral/Head";
 import SubHead from "../Styles/SubHeadStyle";
-import FormHabit from "../Habit/FormHabit";
+import CreateHabit from "../Habit/CreateHabit";
 import Menu from "../Geral/Menu";
 import NoHabit from "../Habit/NoHabit";
 import WithHabit from "../Habit/WithHabit";
@@ -10,6 +10,7 @@ export default function Habits() {
   const [controlHabit, setControlHabit] = useState([]);
   const [newHabit, setNewHabit] = useState(false);
   const img = localStorage.getItem("myImageInLocalStorage");
+
   useEffect(() => {
     const tokenLocal = localStorage.getItem("myValueInLocalStorage");
     const config = {
@@ -24,7 +25,7 @@ export default function Habits() {
     promise.then((res) => {
       setControlHabit(res.data);
     });
-  }, []);
+  }, [controlHabit]);
 
   return (
     <>
@@ -33,7 +34,7 @@ export default function Habits() {
         <div>Meus Hábitos</div>
         <button onClick={() => setNewHabit(true)}>+</button>
       </SubHead>
-      {!newHabit ? "" : <FormHabit />}
+      {!newHabit ? "" : <CreateHabit setNewHabit={setNewHabit} newHabit={newHabit} />}
       {controlHabit.length === 0 ? <NoHabit /> : <WithHabit controlHabit={controlHabit} />}
       <Menu />
     </>

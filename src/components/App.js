@@ -11,10 +11,7 @@ import { useState } from "react";
 
 export default function App() {
   const [change, setChange] = useState(true);
-  const [habit, setHabit] = useState({
-    name: "",
-    days: [],
-  });
+  
   const [control, setControl] = useState(false);
   let daysFixed = [
     { id: 0, name: "D" },
@@ -31,8 +28,6 @@ export default function App() {
       value={{
         change,
         setChange,
-        habit,
-        setHabit,
         control,
         setControl,
         daysFixed,

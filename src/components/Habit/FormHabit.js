@@ -6,5 +6,5 @@ import CreateHabit from "../Habit/CreateHabit";
 export default function FormHabit() {
   const { control } = useContext(UserContext);
 
-  return control ? <WithHabit /> : <CreateHabit />;
+  return  <CreateHabit />
 }

@@ -14,12 +14,12 @@ function RenderDays({ daysFixed, habit }) {
     </Days>
   );
 }
-function Day({ day, habit }) {
+function Day({ day }) {
   return <DayStyle>{day.name}</DayStyle>;
 }
 export default function WithHabit({ controlHabit }) {
   const { daysFixed } = useContext(UserContext);
-  console.log(controlHabit);
+ 
 
   // function DeleteHabit() {
   //   const tokenLocal = localStorage.getItem("myValueInLocalStorage");

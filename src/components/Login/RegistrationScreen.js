@@ -22,7 +22,7 @@ export default function RegistrationScreen() {
     });
   }
 
-  console.log(userInfo);
+
 
   function sendForm() {
     setLoading(true);
